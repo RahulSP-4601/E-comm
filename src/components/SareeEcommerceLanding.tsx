@@ -31,7 +31,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 const FRAME_COUNT = 168;
 const SCROLL_SENSITIVITY = 0.00115;
-const FRAME_SCALE = 1.12;
+const FRAME_SCALE = 1.02;
 
 function buildFrameSources() {
   return Array.from(
@@ -122,7 +122,7 @@ function ScrollImageSequence({
 
       context.clearRect(0, 0, width, height);
 
-      const scale = Math.min(width / image.width, height / image.height) * FRAME_SCALE;
+      const scale = Math.max(width / image.width, height / image.height) * FRAME_SCALE;
       const drawWidth = image.width * scale;
       const drawHeight = image.height * scale;
       const x = (width - drawWidth) / 2;
@@ -204,7 +204,7 @@ function ScrollImageSequence({
 
         context.clearRect(0, 0, width, height);
 
-        const scale = Math.min(width / image.width, height / image.height) * FRAME_SCALE;
+        const scale = Math.max(width / image.width, height / image.height) * FRAME_SCALE;
         const drawWidth = image.width * scale;
         const drawHeight = image.height * scale;
         const x = (width - drawWidth) / 2;
@@ -469,7 +469,7 @@ export default function SareeEcommerceLanding() {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="max-w-[34rem] text-white"
+              className="order-2 max-w-[34rem] text-white lg:order-1"
             >
               <Badge className="mb-4 border-white/30 bg-white/20 px-3 py-1 text-white backdrop-blur-sm">
                 <Sparkles className="mr-1 h-3 w-3" />
@@ -501,9 +501,9 @@ export default function SareeEcommerceLanding() {
               initial={{ opacity: 0, scale: 0.86 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative flex items-center justify-center lg:justify-end"
+              className="order-1 relative flex items-center justify-center lg:order-2 lg:justify-end"
             >
-              <div className="relative h-[80svh] w-full max-w-[28rem] overflow-hidden rounded-[2.15rem] border-4 border-white/20 bg-white/10 p-3 shadow-[0_40px_140px_rgba(95,35,51,0.24)] backdrop-blur-md sm:h-[84svh] sm:max-w-[30rem] lg:h-[88svh] lg:max-w-[32rem] xl:max-w-[34rem]">
+              <div className="relative h-[58svh] w-full max-w-[21rem] overflow-hidden rounded-[2.15rem] border-4 border-white/20 bg-white/10 p-3 shadow-[0_40px_140px_rgba(95,35,51,0.24)] backdrop-blur-md sm:h-[66svh] sm:max-w-[24rem] md:h-[74svh] md:max-w-[26rem] lg:h-[88svh] lg:max-w-[32rem] xl:max-w-[34rem]">
                 <div className="relative h-full w-full overflow-hidden rounded-[2rem] bg-white/18">
                   <ScrollImageSequence sectionRef={heroRef} onSequenceCompleteChange={setSequenceComplete} />
                 </div>
