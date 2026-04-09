@@ -31,7 +31,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 const FRAME_COUNT = 168;
 const SCROLL_SENSITIVITY = 0.00115;
-const FRAME_SCALE = 1.04;
+const FRAME_SCALE = 1.12;
 
 function buildFrameSources() {
   return Array.from(
@@ -489,18 +489,8 @@ export default function SareeEcommerceLanding() {
                 <Button
                   asChild
                   size="lg"
-                  className="min-w-[11.5rem] rounded-full bg-white px-7 text-base font-semibold text-[#b94f71] shadow-[0_16px_40px_rgba(255,255,255,0.24)] hover:bg-white/92"
-                >
-                  <a href="#pricing">
-                    Shop Collection
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </a>
-                </Button>
-                <Button
-                  asChild
-                  size="lg"
                   variant="outline"
-                  className="min-w-[10.5rem] rounded-full border-white/55 bg-white/8 px-7 text-base font-medium text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)] backdrop-blur-sm hover:bg-white/14 hover:text-white"
+                  className="min-w-[11rem] rounded-full border-white/55 bg-white/8 px-8 text-base font-medium text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)] backdrop-blur-sm hover:bg-white/14 hover:text-white"
                 >
                   <a href="#features">View Catalog</a>
                 </Button>
@@ -513,7 +503,7 @@ export default function SareeEcommerceLanding() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative flex items-center justify-center lg:justify-end"
             >
-              <div className="relative h-[72svh] w-full max-w-[32rem] overflow-hidden rounded-[2.15rem] border-4 border-white/20 bg-white/10 p-3 shadow-[0_40px_140px_rgba(95,35,51,0.24)] backdrop-blur-md sm:h-[78svh] sm:max-w-[35rem] lg:h-[82svh] lg:max-w-[38rem] xl:max-w-[40rem]">
+              <div className="relative h-[80svh] w-full max-w-[34rem] overflow-hidden rounded-[2.15rem] border-4 border-white/20 bg-white/10 p-3 shadow-[0_40px_140px_rgba(95,35,51,0.24)] backdrop-blur-md sm:h-[84svh] sm:max-w-[38rem] lg:h-[88svh] lg:max-w-[42rem] xl:max-w-[44rem]">
                 <div className="relative h-full w-full overflow-hidden rounded-[2rem] bg-white/18">
                   <ScrollImageSequence sectionRef={heroRef} onSequenceCompleteChange={setSequenceComplete} />
                 </div>
