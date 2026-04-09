@@ -31,6 +31,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 const FRAME_COUNT = 168;
 const SCROLL_SENSITIVITY = 0.00115;
+const FRAME_SCALE = 1.04;
 
 function buildFrameSources() {
   return Array.from(
@@ -59,7 +60,6 @@ function ScrollImageSequence({
   const touchStartRef = useRef<number | null>(null);
   const originalBodyOverflowRef = useRef<string | null>(null);
   const [imagesLoaded, setImagesLoaded] = useState(false);
-  const [sequenceProgress, setSequenceProgress] = useState(0);
   const [sequenceComplete, setSequenceComplete] = useState(false);
 
   useEffect(() => {
@@ -122,7 +122,7 @@ function ScrollImageSequence({
 
       context.clearRect(0, 0, width, height);
 
-      const scale = Math.min(width / image.width, height / image.height) * 1.12;
+      const scale = Math.min(width / image.width, height / image.height) * FRAME_SCALE;
       const drawWidth = image.width * scale;
       const drawHeight = image.height * scale;
       const x = (width - drawWidth) / 2;
@@ -164,7 +164,6 @@ function ScrollImageSequence({
     const updateProgress = (nextProgress: number) => {
       const clampedProgress = clamp(nextProgress, 0, 1);
       progressRef.current = clampedProgress;
-      setSequenceProgress(clampedProgress);
 
       const nextFrameIndex = clamp(Math.floor(clampedProgress * (FRAME_COUNT - 1)), 0, FRAME_COUNT - 1);
       frameIndexRef.current = nextFrameIndex;
@@ -205,7 +204,7 @@ function ScrollImageSequence({
 
         context.clearRect(0, 0, width, height);
 
-        const scale = Math.min(width / image.width, height / image.height) * 1.12;
+        const scale = Math.min(width / image.width, height / image.height) * FRAME_SCALE;
         const drawWidth = image.width * scale;
         const drawHeight = image.height * scale;
         const x = (width - drawWidth) / 2;
@@ -321,9 +320,6 @@ function ScrollImageSequence({
   return (
     <>
       <canvas ref={canvasRef} className="h-full w-full" />
-      <div className="pointer-events-none absolute bottom-6 left-1/2 z-20 -translate-x-1/2 rounded-full bg-black/20 px-4 py-2 text-xs font-medium tracking-[0.18em] text-white/85 backdrop-blur-md">
-        {Math.round(sequenceProgress * 100)}% revealed
-      </div>
     </>
   );
 }
@@ -468,7 +464,7 @@ export default function SareeEcommerceLanding() {
         </motion.div>
 
         <div className="container relative z-10 mx-auto px-4 py-16 sm:px-6 lg:px-8">
-          <div className="grid items-center gap-12 lg:grid-cols-[minmax(320px,0.95fr)_minmax(520px,1.05fr)]">
+          <div className="grid items-center gap-10 lg:grid-cols-[minmax(320px,0.92fr)_minmax(500px,1.08fr)] lg:gap-14">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -489,8 +485,12 @@ export default function SareeEcommerceLanding() {
                 Experience the beauty of traditional sarees with an immersive preview, curated collections, and a soft
                 luxury shopping journey.
               </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Button asChild size="lg" className="bg-white text-[#CA6180] hover:bg-white/90">
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <Button
+                  asChild
+                  size="lg"
+                  className="min-w-[11.5rem] rounded-full bg-white px-7 text-base font-semibold text-[#b94f71] shadow-[0_16px_40px_rgba(255,255,255,0.24)] hover:bg-white/92"
+                >
                   <a href="#pricing">
                     Shop Collection
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -500,7 +500,7 @@ export default function SareeEcommerceLanding() {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-white/50 bg-transparent text-white hover:bg-white/10 hover:text-white"
+                  className="min-w-[10.5rem] rounded-full border-white/55 bg-white/8 px-7 text-base font-medium text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)] backdrop-blur-sm hover:bg-white/14 hover:text-white"
                 >
                   <a href="#features">View Catalog</a>
                 </Button>
@@ -513,7 +513,7 @@ export default function SareeEcommerceLanding() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative flex items-center justify-center lg:justify-end"
             >
-              <div className="relative h-[80svh] w-full max-w-[34rem] overflow-hidden rounded-[2.15rem] border-4 border-white/20 bg-white/10 p-3 shadow-[0_40px_140px_rgba(95,35,51,0.24)] backdrop-blur-md sm:h-[84svh] sm:max-w-[38rem] lg:h-[88svh] lg:max-w-[42rem] xl:max-w-[44rem]">
+              <div className="relative h-[72svh] w-full max-w-[32rem] overflow-hidden rounded-[2.15rem] border-4 border-white/20 bg-white/10 p-3 shadow-[0_40px_140px_rgba(95,35,51,0.24)] backdrop-blur-md sm:h-[78svh] sm:max-w-[35rem] lg:h-[82svh] lg:max-w-[38rem] xl:max-w-[40rem]">
                 <div className="relative h-full w-full overflow-hidden rounded-[2rem] bg-white/18">
                   <ScrollImageSequence sectionRef={heroRef} onSequenceCompleteChange={setSequenceComplete} />
                 </div>
