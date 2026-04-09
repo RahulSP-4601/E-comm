@@ -503,7 +503,7 @@ export default function SareeEcommerceLanding() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative flex items-center justify-center lg:justify-end"
             >
-              <div className="relative h-[80svh] w-full max-w-[34rem] overflow-hidden rounded-[2.15rem] border-4 border-white/20 bg-white/10 p-3 shadow-[0_40px_140px_rgba(95,35,51,0.24)] backdrop-blur-md sm:h-[84svh] sm:max-w-[38rem] lg:h-[88svh] lg:max-w-[42rem] xl:max-w-[44rem]">
+              <div className="relative h-[80svh] w-full max-w-[28rem] overflow-hidden rounded-[2.15rem] border-4 border-white/20 bg-white/10 p-3 shadow-[0_40px_140px_rgba(95,35,51,0.24)] backdrop-blur-md sm:h-[84svh] sm:max-w-[30rem] lg:h-[88svh] lg:max-w-[32rem] xl:max-w-[34rem]">
                 <div className="relative h-full w-full overflow-hidden rounded-[2rem] bg-white/18">
                   <ScrollImageSequence sectionRef={heroRef} onSequenceCompleteChange={setSequenceComplete} />
                 </div>
